@@ -6,20 +6,6 @@ function onInit() {
     renderVendors()
 }
 
-// function renderCars() {
-//     var cars = getCars()
-//     let strHTMLs = cars.map(car => `
-//     <article class="car-preview">
-//     <button onclick="onDeleteCar('${car.id}')" class="btn-remove">X</button>
-//     <h5>${car.vendor}</h5>
-//     <img onerror="this.src='img/error.png'" src="img/${car.vendor}.png" alt="${car.vendor}">
-//     <h6>up to <span>${car.maxSpeed}</span></h6>
-//     <button onclick="onReadCar('${car.id}')">Details</button>
-//     <button onclick="onUpdateCar('${car.id}')">Update</button>
-//     </article>`
-//     )
-//     document.querySelector('.cars-container').innerHTML = strHTMLs.join('')
-// }
 
 function renderCars() {
     const cars = getCars()
@@ -35,9 +21,8 @@ function renderCars() {
         <button onclick="onDeleteCar('${car.id}')" class="btn-remove">X</button>
         <button onclick="onReadCar('${car.id}')">Details</button>
         <button onclick="onUpdateCar('${car.id}')">Update</button>
-    </td>
-    </tr>`
-        )
+        </td>
+        </tr>`)
         strHTMLs.unshift(`<thead>
         <tr>
             <th>Id</th>
