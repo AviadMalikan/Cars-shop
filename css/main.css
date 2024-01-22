@@ -1,0 +1,88 @@
+body {
+    background-color: lightgray;
+    overflow-x: hidden;
+    padding: 0 40px;
+    text-align: center;
+}
+
+button {
+    /* color: whitesmoke; */
+    border: 0;
+    border-radius: .2em;
+    padding: 6px 10px;
+    margin: 2px;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+button:hover {
+    background-color: gray;
+    color: whitesmoke;
+}
+
+img {
+    height: 100px;
+    max-width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+}
+
+.cars-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.car-preview {
+    /* background-color: whitesmoke; */
+    max-width: 20%;
+    min-width: auto;
+    margin: .5em 1em;
+    padding: 5px;
+    border: 2px rgb(219, 219, 219) solid;
+    border-radius: 5px;
+}
+
+.car-preview .btn-remove {
+    float: right;
+}
+
+.car-preview h5 {
+    font-size: 1.4em;
+    text-decoration: overline;
+    text-transform: capitalize;
+}
+
+.modal {
+    color: whitesmoke;
+    background-color: black;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 150%;
+    height: 80vh;
+    min-width: 300px;
+    transition: left .5s;
+}
+
+.modal.open {
+    left: 50%;
+}
+
+.modal h3 {
+    text-transform: capitalize;
+    color: lightblue;
+}
+
+
+.user-msg {
+    position: fixed;
+    bottom: -100px;
+    right: 10px;
+    background-color: darkgray;
+    padding: 10px;
+    transition: bottom .5s;
+}
+
+.user-msg.open {
+    bottom: 10px;
+}

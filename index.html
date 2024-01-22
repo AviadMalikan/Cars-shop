@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars shop</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body onload="onInit()">
+    <h1>Cars Shops</h1>
+
+    <section class="car-filter">
+        <h2>Filter</h2>
+        <select class="filter-vendor-select" onchange="onSetFilterBy({vendor:this.value})">
+        </select>
+        <label>
+            Min speed
+            <input type="range" min="50" max="300" value="50" class="filter-speed-range"
+                onchange="this.title=this.value,onSetFilterBy({minSpeed: this.value})">
+        </label>
+    </section>
+    <section class="car-sort">
+        Sort By:
+        <select class="sort-by" onchange="onSetSortBy()">
+            <option value="">select sorting</option>
+            <option value="vendor">By vendor</option>
+            <option value="maxSpeed">speed</option>
+        </select>
+        <input type="checkbox" class="sort-desc" onchange="onSetSortBy()">
+    </section>
+
+    <button onclick="onMovePage(-1)">Prev Page</button>
+    <button onclick="onMovePage(+1)">Next Page</button>
+    <button class="add-car" onclick="onAddCar()">Add Car</button>
+
+    <section class="cars-container"> </section>
+
+    <table class="cars-container-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>vendor</th>
+                <th>Description</th>
+                <th>Max speed</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>car.id</td>
+                <td>car.maxSpeed</td>
+                <td>car.vendor</td>
+                <td>car.desc</td>
+                <td>
+                    <button onclick="onDeleteCar('${car.id}')" class="btn-remove">X</button>
+                    <button onclick="onReadCar('${car.id}')">Details</button>
+                    <button onclick="onUpdateCar('${car.id}')">Update</button>
+                </td>
+            </tr>
+    </table>
+
+
+    <div class="modal">
+        <h3></h3>
+        <h4>max speed <span></span></h4>
+        <h5> </h5>
+        <p></p>
+        <button onclick="onCloseModal()">Close</button>
+    </div>
+
+
+    <div class="user-msg"></div>
+
+
+    <script src="js/services/utils.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/car.service.js"></script>
+    <script src="js/controller.js"></script>
+</body>
+
+</html>
