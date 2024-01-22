@@ -26,6 +26,10 @@ function getVendors() {
     return gVendors
 }
 
+function getShowBy() {
+    return gShowBy
+}
+
 function getCars() {
     var cars = gCars.filter(car => car.vendor.includes(gFilterBy.vendor) && car.maxSpeed >= gFilterBy.minSpeed)
 

@@ -23,19 +23,44 @@ function onInit() {
 
 function renderCars() {
     const cars = getCars()
-    let strHTML = cars.map(car => `  <tr>
-    <td>${car.id}</td>
-    <td>${car.maxSpeed}</td>
-    <td>${car.vendor}</td>
-    <td>${car.desc}</td>
-    <td>
+    let strHTMLs
+    let viewStatus = getShowBy()
+    if (viewStatus === 'table') {
+        strHTMLs = cars.map(car => `<tr>
+        <td>${car.id}</td>
+        <td>${car.maxSpeed}</td>
+        <td>${car.vendor}</td>
+        <td>${car.desc}</td>
+        <td>
         <button onclick="onDeleteCar('${car.id}')" class="btn-remove">X</button>
         <button onclick="onReadCar('${car.id}')">Details</button>
         <button onclick="onUpdateCar('${car.id}')">Update</button>
     </td>
-</tr>`
-    )
-    document.querySelector('.cars-container-table').innerHTML = strHTML.join('')
+    </tr>`
+        )
+        strHTMLs.unshift(`<thead>
+        <tr>
+            <th>Id</th>
+            <th>vendor</th>
+            <th>Description</th>
+            <th>Max speed</th>
+            <th>Actions</th>
+        </tr>
+    </thead>`)
+        document.querySelector('.cars-container-table').innerHTML = strHTMLs.join('')
+    } else {
+        strHTMLs = cars.map(car => `
+             <article class="car-preview">
+             <button onclick="onDeleteCar('${car.id}')" class="btn-remove">X</button>
+             <h5>${car.vendor}</h5>
+             <img onerror="this.src='img/error.png'" src="img/${car.vendor}.png" alt="${car.vendor}">
+             <h6>up to <span>${car.maxSpeed}</span></h6>
+             <button onclick="onReadCar('${car.id}')">Details</button>
+             <button onclick="onUpdateCar('${car.id}')">Update</button>
+             </article>`
+        )
+        document.querySelector('.cars-container').innerHTML = strHTMLs.join('')
+    }
 }
 
 
