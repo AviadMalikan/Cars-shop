@@ -71,12 +71,16 @@ function setCarFilter(filterBy = {}) {
 
 function setCarSort(sortBy = {}) {
     if (sortBy.maxSpeed !== undefined) {
-
         gCars.sort((c1, c2) => (c1.maxSpeed - c2.maxSpeed) * sortBy.maxSpeed)
     } else if (sortBy.vendor !== undefined) {
         gCars.sort((c1, c2) => c1.vendor.localeCompare(c2.vendor) * sortBy.vendor)
     }
 }
+
+function setShowBy(showBy) {
+    gShowBy = showBy
+}
+
 
 function _createCars() {
     let cars = loadFromStorage(STORAGE_KEY)
@@ -102,4 +106,35 @@ function _createCar(vendor) {
 
 function _saveCarToStorage() {
     saveToStorage(STORAGE_KEY, gCars)
+}
+
+
+function getTableCarSrt(car) {
+    return `<tr>
+    <td>${car.id}</td>
+    <td>${car.vendor}</td>
+    <td>${_trimStr(car.desc)}</td>
+    <td>${car.maxSpeed}</td>
+    <td>
+    <button onclick="onDeleteCar('${car.id}')" class="btn-remove">X</button>
+    <button onclick="onReadCar('${car.id}')">Details</button>
+    <button onclick="onUpdateCar('${car.id}')">Update</button>
+    </td>
+    </tr>`
+}
+
+function getCardCarStr(car) {
+    return `<article class="car-preview">
+    <button onclick="onDeleteCar('${car.id}')" class="btn-remove">X</button>
+    <h5>${car.vendor}</h5>
+    <img onerror="this.src='img/error.png'" src="img/${car.vendor}.png" alt="${car.vendor}">
+    <h6>up to <span>${car.maxSpeed}</span></h6>
+    <button onclick="onReadCar('${car.id}')">Details</button>
+    <button onclick="onUpdateCar('${car.id}')">Update</button>
+    </article>`
+}
+
+
+function _trimStr(str) {
+    if (str.length > 100) return str.substring(0, 70) + '...'
 }

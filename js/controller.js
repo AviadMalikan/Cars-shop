@@ -12,18 +12,9 @@ function renderCars() {
     let strHTMLs
     let viewStatus = getShowBy()
     if (viewStatus === 'table') {
-        strHTMLs = cars.map(car => `<tr>
-        <td>${car.id}</td>
-        <td>${car.maxSpeed}</td>
-        <td>${car.vendor}</td>
-        <td>${car.desc}</td>
-        <td>
-        <button onclick="onDeleteCar('${car.id}')" class="btn-remove">X</button>
-        <button onclick="onReadCar('${car.id}')">Details</button>
-        <button onclick="onUpdateCar('${car.id}')">Update</button>
-        </td>
-        </tr>`)
-        strHTMLs.unshift(`<thead>
+        strHTMLs = cars.map(car => getTableCarSrt(car))
+        strHTMLs.unshift(`
+        <table><thead>
         <tr>
             <th>Id</th>
             <th>vendor</th>
@@ -32,18 +23,9 @@ function renderCars() {
             <th>Actions</th>
         </tr>
     </thead>`)
-        document.querySelector('.cars-container-table').innerHTML = strHTMLs.join('')
+        document.querySelector('.cars-container').innerHTML = strHTMLs.join('') + '</table>'
     } else {
-        strHTMLs = cars.map(car => `
-             <article class="car-preview">
-             <button onclick="onDeleteCar('${car.id}')" class="btn-remove">X</button>
-             <h5>${car.vendor}</h5>
-             <img onerror="this.src='img/error.png'" src="img/${car.vendor}.png" alt="${car.vendor}">
-             <h6>up to <span>${car.maxSpeed}</span></h6>
-             <button onclick="onReadCar('${car.id}')">Details</button>
-             <button onclick="onUpdateCar('${car.id}')">Update</button>
-             </article>`
-        )
+        strHTMLs = cars.map(car => getCardCarStr(car))
         document.querySelector('.cars-container').innerHTML = strHTMLs.join('')
     }
 }
@@ -54,6 +36,11 @@ function renderVendors() {
     const strHTML = vendors.map(vendor => `<option value="${vendor}">${vendor.charAt(0).toUpperCase() + vendor.substring(1)}</option>`)
     strHTML.unshift(` <option value="">Select Vendor</option>`)
     document.querySelector('.filter-vendor-select').innerHTML += strHTML
+}
+
+function onSetShowBy(showBy) {
+    setShowBy(showBy)
+    renderCars()
 }
 
 function onDeleteCar(carId) {

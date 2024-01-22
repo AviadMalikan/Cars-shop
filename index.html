@@ -31,35 +31,19 @@
         <input type="checkbox" class="sort-desc" onchange="onSetSortBy()">
     </section>
 
+    <section class="show-by">
+        <button onclick="onSetShowBy('cards')">CARDS</button>
+        <button onclick="onSetShowBy('table')">LIST</button>
+    </section>
+
+
     <button onclick="onMovePage(-1)">Prev Page</button>
     <button onclick="onMovePage(+1)">Next Page</button>
     <button class="add-car" onclick="onAddCar()">Add Car</button>
 
     <section class="cars-container"> </section>
 
-    <table class="cars-container-table">
-        <!-- <thead>
-            <tr>
-                <th>Id</th>
-                <th>vendor</th>
-                <th>Description</th>
-                <th>Max speed</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>car.id</td>
-                <td>car.maxSpeed</td>
-                <td>car.vendor</td>
-                <td>car.desc</td>
-                <td>
-                    <button onclick="onDeleteCar('${car.id}')" class="btn-remove">X</button>
-                    <button onclick="onReadCar('${car.id}')">Details</button>
-                    <button onclick="onUpdateCar('${car.id}')">Update</button>
-                </td>
-            </tr> -->
-    </table>
+    <table class="cars-container-table"></table>
 
 
     <div class="modal">
