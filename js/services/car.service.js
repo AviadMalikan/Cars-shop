@@ -66,12 +66,14 @@ function setRate(carId, num) {
     const car = getCarById(carId)
     if (car.rate + num < 0 || car.rate + num > 5) return
     car.rate += num
+    _saveCarToStorage()
     return car
 }
 
 function addFavorite(carId){
     const car = getCarById(carId)
     car.isFav = !car.isFav
+    _saveCarToStorage()
 }
 
 function setCarFilter(filterBy = {}) {
@@ -130,7 +132,7 @@ function getTableCarSrt(car) {
     <td>${_trimStr(car.desc)}</td>
     <td>${car.maxSpeed}</td>
     <td>
-    <button onclick="onDeleteCar('${car.id}')" class="btn-remove">X</button>
+    <button onclick="onDeleteCar('${car.id}')" class="btn-remove">Remove</button>
     <button onclick="onReadCar('${car.id}')">Details</button>
     <button onclick="onUpdateCar('${car.id}')">Update</button>
     <button onclick="onAddFavorite('${car.id}')">${car.isFav ? '❤️' : '🖤'}</button>
