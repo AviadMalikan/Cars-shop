@@ -74,8 +74,25 @@ function onReadCar(carId) {
     elModal.querySelector('h3').innerText = car.vendor
     elModal.querySelector('h4 span').innerText = car.maxSpeed
     elModal.querySelector('p').innerText = car.desc
-    elModal.querySelector('.rate').innerText = '⭐'.repeat(car.rate)
+    console.log('car: ', car)
+
+    var strHTML =
+        `
+        <button class="rate" onclick="onSetRate('${car.id}',1)">+</button>
+        <button class="rate" onclick="onSetRate('${car.id}',-1)">-</button>
+        <br>
+        <span>${car.rate ? '⭐'.repeat(car.rate) : '⚫'}</span>`
+    elModal.querySelector('.rate').innerHTML = strHTML
     elModal.classList.add('open')
+}
+
+function onSetRate(carId, num) {
+    const car = getCarById(carId)
+    if (car.rate + num < 0 || car.rate + num > 5) return
+    car.rate += num
+    var elSpanModal = document.querySelector('.modal h5 span')
+    elSpanModal.innerText = car.rate ? '⭐'.repeat(car.rate) : '⚫'
+
 }
 
 function onSetFilterBy(filterBy) {
