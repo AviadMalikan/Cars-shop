@@ -77,8 +77,7 @@ function onReadCar(carId) {
     console.log('car: ', car)
 
     var strHTML =
-        `
-        <button class="rate" onclick="onSetRate('${car.id}',1)">+</button>
+        `<button class="rate" onclick="onSetRate('${car.id}',1)">+</button>
         <button class="rate" onclick="onSetRate('${car.id}',-1)">-</button>
         <br>
         <span>${car.rate ? '⭐'.repeat(car.rate) : '⚫'}</span>`
@@ -87,12 +86,14 @@ function onReadCar(carId) {
 }
 
 function onSetRate(carId, num) {
-    const car = getCarById(carId)
-    if (car.rate + num < 0 || car.rate + num > 5) return
-    car.rate += num
+    const car = setRate(carId, num)
     var elSpanModal = document.querySelector('.modal h5 span')
     elSpanModal.innerText = car.rate ? '⭐'.repeat(car.rate) : '⚫'
+}
 
+function onAddFavorite(carId) {
+    addFavorite(carId)
+    renderCars()
 }
 
 function onSetFilterBy(filterBy) {

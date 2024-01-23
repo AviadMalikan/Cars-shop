@@ -62,6 +62,18 @@ function updateCar(carId, newSpeed) {
     return car
 }
 
+function setRate(carId, num) {
+    const car = getCarById(carId)
+    if (car.rate + num < 0 || car.rate + num > 5) return
+    car.rate += num
+    return car
+}
+
+function addFavorite(carId){
+    const car = getCarById(carId)
+    car.isFav = !car.isFav
+}
+
 function setCarFilter(filterBy = {}) {
     gPageIdx = 0
     if (filterBy.vendor !== undefined) gFilterBy.vendor = filterBy.vendor
@@ -101,7 +113,8 @@ function _createCar(vendor) {
         vendor,
         maxSpeed: getRandomInt(50, 250),
         desc: getLorem(),
-        rate: getRandomInt(0, 5)
+        rate: getRandomInt(0, 5),
+        isFav: false
     }
 }
 
@@ -120,6 +133,7 @@ function getTableCarSrt(car) {
     <button onclick="onDeleteCar('${car.id}')" class="btn-remove">X</button>
     <button onclick="onReadCar('${car.id}')">Details</button>
     <button onclick="onUpdateCar('${car.id}')">Update</button>
+    <button onclick="onAddFavorite('${car.id}')">${car.isFav ? '❤️' : '🖤'}</button>
     </td>
     </tr>`
 }
@@ -127,6 +141,7 @@ function getTableCarSrt(car) {
 function getCardCarStr(car) {
     return `<article class="car-preview">
     <button onclick="onDeleteCar('${car.id}')" class="btn-remove">X</button>
+    <button onclick="onAddFavorite('${car.id}')" class="btn-fav">${car.isFav ? '❤️' : '🖤'}</button>
     <h5>${car.vendor}</h5>
     <img onerror="this.src='img/error.png'" src="img/${car.vendor}.png" alt="${car.vendor}">
     <h6>up to <span>${car.maxSpeed}</span></h6>

@@ -45,6 +45,10 @@ img {
 .car-preview .btn-remove {
     float: right;
 }
+.car-preview .btn-fav {
+    float: left;
+    padding: 6px;
+}
 
 .car-preview h5 {
     font-size: 1.4em;
