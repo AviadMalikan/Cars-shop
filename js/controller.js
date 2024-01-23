@@ -74,6 +74,7 @@ function onReadCar(carId) {
     elModal.querySelector('h3').innerText = car.vendor
     elModal.querySelector('h4 span').innerText = car.maxSpeed
     elModal.querySelector('p').innerText = car.desc
+    elModal.querySelector('.rate').innerText = '⭐'.repeat(car.rate)
     elModal.classList.add('open')
 }
 

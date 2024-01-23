@@ -101,6 +101,7 @@ function _createCar(vendor) {
         vendor,
         maxSpeed: getRandomInt(50, 250),
         desc: getLorem(),
+        rate: getRandomInt(0, 5)
     }
 }
 
