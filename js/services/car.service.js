@@ -6,7 +6,7 @@ const gVendors = ['audi', 'mazda', 'toyota', 'bmw', 'kia']
 let pageSize = 5
 let gPageIdx = 0
 let gCars
-let gFilterBy = { vendor: '', minSpeed: 0 }
+let gFilterBy = { vendor: '', minSpeed: 0, name: '', minRate: 0 }
 let gShowBy = 'cards'
 
 _createCars()
@@ -31,7 +31,7 @@ function getShowBy() {
 }
 
 function getCars() {
-    var cars = gCars.filter(car => car.vendor.includes(gFilterBy.vendor) && car.maxSpeed >= gFilterBy.minSpeed)
+    var cars = gCars.filter(car => car.vendor.includes(gFilterBy.name) && car.vendor.includes(gFilterBy.vendor) && car.maxSpeed >= gFilterBy.minSpeed)
 
     var startIdx = gPageIdx * pageSize
     return cars.slice(startIdx, startIdx + pageSize)
@@ -45,6 +45,7 @@ function delateCar(carId) {
 
 function addCar(vendor) {
     const car = _createCar(vendor)
+    if (!gVendors.includes(vendor)) gVendors.push(vendor)
     gCars.unshift(car)
     _saveCarToStorage(STORAGE_KEY)
     return car
@@ -70,7 +71,7 @@ function setRate(carId, num) {
     return car
 }
 
-function addFavorite(carId){
+function addFavorite(carId) {
     const car = getCarById(carId)
     car.isFav = !car.isFav
     _saveCarToStorage()
@@ -79,6 +80,7 @@ function addFavorite(carId){
 function setCarFilter(filterBy = {}) {
     gPageIdx = 0
     if (filterBy.vendor !== undefined) gFilterBy.vendor = filterBy.vendor
+    if (filterBy.name !== undefined) gFilterBy.name = filterBy.name
     if (filterBy.minSpeed !== undefined) gFilterBy.minSpeed = filterBy.minSpeed
     return gFilterBy
 }

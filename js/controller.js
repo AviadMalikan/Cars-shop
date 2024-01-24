@@ -35,7 +35,7 @@ function renderVendors() {
     const vendors = getVendors()
     const strHTML = vendors.map(vendor => `<option value="${vendor}">${vendor.charAt(0).toUpperCase() + vendor.substring(1)}</option>`)
     strHTML.unshift(` <option value="">Select Vendor</option>`)
-    document.querySelector('.filter-vendor-select').innerHTML += strHTML
+    document.querySelector('.filter-vendor-select').innerHTML = strHTML
 }
 
 function onSetShowBy(showBy) {
@@ -54,6 +54,7 @@ function onAddCar() {
     if (vendor) {
         const car = addCar(vendor)
         renderCars()
+        renderVendors()
         flashMsg(`Car Added (id: ${car.id})`)
     } else flashMsg(`Try Again later`)
 }

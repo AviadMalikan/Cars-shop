@@ -20,6 +20,10 @@
             <input type="range" min="50" max="300" value="50" class="filter-speed-range"
                 onchange="this.title=this.value,onSetFilterBy({minSpeed: this.value})">
         </label>
+        <div class="filter-text">
+            <input type="text" id="search-box" placeholder="Enter car name" class="filter-name-box"
+                onkeyup="onSetFilterBy({name: this.value})">
+        </div>
     </section>
     <section class="car-sort">
         Sort By:
