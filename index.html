@@ -13,8 +13,8 @@
 
     <section class="car-filter">
         <h2>Filter</h2>
-        <select class="filter-vendor-select" onchange="onSetFilterBy({vendor:this.value})">
-        </select>
+        <!-- <select class="filter-vendor-select" onchange="onSetFilterBy({vendor:this.value})">
+        </select> -->
         <label>
             Min speed
             <input type="range" min="50" max="300" value="50" class="filter-speed-range"
@@ -22,7 +22,7 @@
         </label>
         <div class="filter-text">
             <input type="text" id="search-box" placeholder="Enter car name" class="filter-name-box"
-                onkeyup="onSetFilterBy({name: this.value})">
+                onkeyup="onSetFilterBy({name: this.value.toLowerCase()})">
         </div>
     </section>
     <section class="car-sort">

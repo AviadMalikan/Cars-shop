@@ -3,7 +3,7 @@
 
 function onInit() {
     renderCars()
-    renderVendors()
+    // renderVendors()
 }
 
 
@@ -54,7 +54,7 @@ function onAddCar() {
     if (vendor) {
         const car = addCar(vendor)
         renderCars()
-        renderVendors()
+        // renderVendors()
         flashMsg(`Car Added (id: ${car.id})`)
     } else flashMsg(`Try Again later`)
 }
