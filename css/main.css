@@ -1,8 +1,68 @@
+* {
+    box-sizing: border-box;
+}
+
+/* typography */
+@font-face {
+    font-family: DMSans;
+    src: url(/fonts/DMSans_18pt-Medium.ttf)
+}
+
+
+/* Vars  & Helpers*/
+
+:root {
+    --clr1: #626262;
+    --clr2: #0044b9;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex.alien-center {
+    align-items: center;
+
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+.clean-list{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+/* base */
+
+/* basics */
+html {
+    color: var(--clr1);
+    font-family: DMSans;
+}
+
+
 body {
-    background-color: lightgray;
+    margin: 0;
     overflow-x: hidden;
-    padding: 0 40px;
     text-align: center;
+}
+
+.main-layout>*:not(.full) {
+    max-width: 1060px;
+    margin: 0 auto;
+}
+
+
+.main-header {
+    height: 160px;
+}
+
+.main-header .logo {
+    font-size: 2.14em;
+    text-transform: uppercase;
+    color: var(--clr2);
 }
 
 button {
@@ -45,6 +105,7 @@ img {
 .car-preview .btn-remove {
     float: right;
 }
+
 .car-preview .btn-fav {
     float: left;
     padding: 6px;

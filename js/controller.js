@@ -72,10 +72,11 @@ function onUpdateCar(carId) {
 function onReadCar(carId) {
     const car = getCarById(carId)
     const elModal = document.querySelector('.modal')
+    if (elModal.classList.value.includes('open')) return elModal.classList.remove('open')
+
     elModal.querySelector('h3').innerText = car.vendor
     elModal.querySelector('h4 span').innerText = car.maxSpeed
     elModal.querySelector('p').innerText = car.desc
-    console.log('car: ', car)
 
     var strHTML =
         `<button class="rate" onclick="onSetRate('${car.id}',1)">+</button>

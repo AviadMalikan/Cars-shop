@@ -8,47 +8,61 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body onload="onInit()">
-    <h1>Cars Shops</h1>
+<body class="main-layout" onload="onInit()">
 
-    <section class="car-filter">
-        <h2>Filter</h2>
-        <!-- <select class="filter-vendor-select" onchange="onSetFilterBy({vendor:this.value})">
-        </select> -->
-        <label>
-            Min speed
-            <input type="range" min="50" max="300" value="50" class="filter-speed-range"
-                onchange="this.title=this.value,onSetFilterBy({minSpeed: this.value})">
-        </label>
-        <div class="filter-text">
-            <input type="text" id="search-box" placeholder="Enter car name" class="filter-name-box"
-                onkeyup="onSetFilterBy({name: this.value.toLowerCase()})">
-        </div>
-    </section>
-    <section class="car-sort">
-        Sort By:
-        <select class="sort-by" onchange="onSetSortBy()">
-            <option value="">select sorting</option>
-            <option value="vendor">By vendor</option>
-            <option value="maxSpeed">speed</option>
-        </select>
-        <input type="checkbox" class="sort-desc" onchange="onSetSortBy()">
-    </section>
+    <header class="main-header flex alien-center space-between">
+        <div class="logo">Cars Shop</div>
 
-    <section class="show-by">
-        <button onclick="onSetShowBy('cards')">&#8759</button>
-        <button onclick="onSetShowBy('table')">&#9825</button>
-    </section>
+        <section class="car-filter">
+            <!-- <select class="filter-vendor-select" onchange="onSetFilterBy({vendor:this.value})">
+            </select> -->
+            <div class="filter-text">
+                <input type="text" id="search-box" placeholder="Enter car name" class="filter-name-box"
+                    onkeyup="onSetFilterBy({name: this.value.toLowerCase()})">
+            </div>
+            <label>
+                Min speed
+                <input type="range" min="50" max="300" value="50" class="filter-speed-range"
+                    onchange="this.title=this.value,onSetFilterBy({minSpeed: this.value})">
+            </label>
+        </section>
 
+        <nav class="main-nav">
+            <ul class="flex clean-list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Cars</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <button onclick="onMovePage(-1)">Prev Page</button>
-    <button onclick="onMovePage(+1)">Next Page</button>
-    <button class="add-car" onclick="onAddCar()">Add Car</button>
+    <main class="main-conatiner">
+        <section class="car-show-by flex alien-center space-between">
 
-    <section class="cars-container"> </section>
+            <section class="car-sort">
+                Sort By:
+                <select class="sort-by" onchange="onSetSortBy()">
+                    <option value="">select sorting</option>
+                    <option value="vendor">By vendor</option>
+                    <option value="maxSpeed">speed</option>
+                </select>
+                <input type="checkbox" class="sort-desc" onchange="onSetSortBy()">Low-high
+            </section>
 
-    <table class="cars-container-table"></table>
+            <section class="show-by">
+                <button onclick="onSetShowBy('cards')">&#8759</button>
+                <button onclick="onSetShowBy('table')">&#9825</button>
+            </section>
+        </section>
 
+        <button class="add-car" onclick="onAddCar()">Add Car</button>
+
+        <section class="cars-container"> </section>
+
+        <table class="cars-container-table"></table>
+        <button onclick="onMovePage(-1)">Prev Page</button>
+        <button onclick="onMovePage(+1)">Next Page</button>
+    </main>
 
     <div class="modal">
         <h3></h3>
@@ -58,8 +72,9 @@
         <button onclick="onCloseModal()">Close</button>
     </div>
 
-
     <div class="user-msg"></div>
+
+
 
 
     <script src="js/services/utils.service.js"></script>
