@@ -29,12 +29,12 @@
     justify-content: space-between;
 }
 
-.clean-list{
+.clean-list {
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
-/* base */
+
 
 /* basics */
 html {
@@ -42,27 +42,10 @@ html {
     font-family: DMSans;
 }
 
-
 body {
     margin: 0;
     overflow-x: hidden;
     text-align: center;
-}
-
-.main-layout>*:not(.full) {
-    max-width: 1060px;
-    margin: 0 auto;
-}
-
-
-.main-header {
-    height: 160px;
-}
-
-.main-header .logo {
-    font-size: 2.14em;
-    text-transform: uppercase;
-    color: var(--clr2);
 }
 
 button {
@@ -81,45 +64,97 @@ button:hover {
 }
 
 img {
-    height: 100px;
     max-width: 100%;
     aspect-ratio: 3/2;
     object-fit: contain;
+    margin-bottom: 10px;
 }
 
-.cars-container {
-    display: flex;
+a {
+    color: var(--clr2);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 1em;
+    font-weight: 500;
+}
+
+/* layout */
+.main-layout>*:not(.full) {
+    max-width: 1060px;
+    margin: 0 auto;
+}
+
+.main-header {
+    height: 160px;
+}
+
+.main-header .logo {
+    font-size: 2.14em;
+    text-transform: uppercase;
+    color: var(--clr2);
+    cursor: pointer;
+}
+
+
+.main-header .main-nav li:not(:last-child) {
+    margin-inline-end: 35px;
+}
+
+
+
+.cars-preview {
     flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
-.car-preview {
-    /* background-color: whitesmoke; */
+.cars-preview-table {
+    justify-content: center;
+}
+
+.car-card {
     max-width: 20%;
     min-width: auto;
     margin: .5em 1em;
-    padding: 5px;
-    border: 2px rgb(219, 219, 219) solid;
+    padding: 10px;
+    /* border: 2px rgb(219, 219, 219) solid; */
     border-radius: 5px;
 }
 
-.car-preview .btn-remove {
+.car-card .btn-remove {
     float: right;
 }
 
-.car-preview .btn-fav {
-    float: left;
-    padding: 6px;
+.car-card .utils-btn {
+    padding: 5px 10px;
 }
 
-.car-preview h5 {
-    font-size: 1.4em;
-    text-decoration: overline;
+.car-card .card-text {
     text-transform: capitalize;
+    text-align: start;
+    padding: 0 15px;
+}
+
+.car-card .card-text h5 {
+    font-size: 1.4em;
+    text-transform: capitalize;
+    margin-block-end: .5em;
 }
 
 .modal {
     color: whitesmoke;
-    background-color: black;
+    background-color: var(--clr2);
     padding: 10px;
     position: absolute;
     top: 0;
@@ -140,6 +175,7 @@ img {
 
 
 .user-msg {
+    text-transform: capitalize;
     position: fixed;
     bottom: -100px;
     right: 10px;

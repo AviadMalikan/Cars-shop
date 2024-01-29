@@ -2,6 +2,7 @@
 
 
 function onInit() {
+    resetValue()
     renderCars()
     // renderVendors()
 }
@@ -17,16 +18,18 @@ function renderCars() {
         <table><thead>
         <tr>
             <th>Id</th>
-            <th>vendor</th>
             <th>Description</th>
             <th>Max speed</th>
             <th>Actions</th>
         </tr>
     </thead>`)
-        document.querySelector('.cars-container').innerHTML = strHTMLs.join('') + '</table>'
+        document.querySelector('.cars-preview').innerHTML = strHTMLs.join('') + '</table>'
+        document.querySelector('.cars-preview').classList.add('cars-preview-table')
+
     } else {
         strHTMLs = cars.map(car => getCardCarStr(car))
-        document.querySelector('.cars-container').innerHTML = strHTMLs.join('')
+        document.querySelector('.cars-preview').innerHTML = strHTMLs.join('')
+        document.querySelector('.cars-preview').classList.remove('cars-preview-table')
     }
 }
 
@@ -80,9 +83,9 @@ function onReadCar(carId) {
 
     var strHTML =
         `<button class="rate" onclick="onSetRate('${car.id}',1)">+</button>
-        <button class="rate" onclick="onSetRate('${car.id}',-1)">-</button>
-        <br>
-        <span>${car.rate ? '⭐'.repeat(car.rate) : '⚫'}</span>`
+    <button class="rate" onclick="onSetRate('${car.id}',-1)">-</button>
+    <br>
+    <span>${car.rate ? '⭐'.repeat(car.rate) : '⚫'}</span>`
     elModal.querySelector('.rate').innerHTML = strHTML
     elModal.classList.add('open')
 }
@@ -94,7 +97,9 @@ function onSetRate(carId, num) {
 }
 
 function onAddFavorite(carId) {
-    addFavorite(carId)
+    const car = addFavorite(carId)
+    let msg = car.isFav ? 'Add to favorite' : 'Remove from favorite'
+    flashMsg(`"${car.vendor}" ${msg}`)
     renderCars()
 }
 
@@ -108,10 +113,7 @@ function onCloseModal() {
 }
 
 function flashMsg(msg) {
-    console.log('msg: ', msg)
-
     const el = document.querySelector('.user-msg')
-    console.log('el: ', el)
     el.innerText = msg
 
     el.classList.add('open')

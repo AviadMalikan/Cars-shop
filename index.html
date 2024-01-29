@@ -11,7 +11,7 @@
 <body class="main-layout" onload="onInit()">
 
     <header class="main-header flex alien-center space-between">
-        <div class="logo">Cars Shop</div>
+        <div class="logo" onclick="onInit()">Shiran Car Shop</div>
 
         <section class="car-filter">
             <!-- <select class="filter-vendor-select" onchange="onSetFilterBy({vendor:this.value})">
@@ -21,7 +21,7 @@
                     onkeyup="onSetFilterBy({name: this.value.toLowerCase()})">
             </div>
             <label>
-                Min speed
+                Minium speed
                 <input type="range" min="50" max="300" value="50" class="filter-speed-range"
                     onchange="this.title=this.value,onSetFilterBy({minSpeed: this.value})">
             </label>
@@ -57,9 +57,9 @@
 
         <button class="add-car" onclick="onAddCar()">Add Car</button>
 
-        <section class="cars-container"> </section>
+        <section class="cars-preview flex"> </section>
 
-        <table class="cars-container-table"></table>
+        <table class="cars-preview-table"></table>
         <button onclick="onMovePage(-1)">Prev Page</button>
         <button onclick="onMovePage(+1)">Next Page</button>
     </main>

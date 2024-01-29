@@ -3,13 +3,19 @@
 const STORAGE_KEY = 'carsDB'
 const gVendors = ['audi', 'mazda', 'toyota', 'bmw', 'kia']
 
-let pageSize = 5
+let pageSize = 8
 let gPageIdx = 0
 let gCars
 let gFilterBy = { vendor: '', minSpeed: 0, name: '', minRate: 0 }
 let gShowBy = 'cards'
 
 _createCars()
+
+function resetValue() {
+    gPageIdx = 0
+    gFilterBy = { vendor: '', minSpeed: 0, name: '', minRate: 0 }
+    gShowBy = 'cards'
+}
 
 function movePage(nextOrBack) {
     let cars = getCars()
@@ -75,6 +81,7 @@ function addFavorite(carId) {
     const car = getCarById(carId)
     car.isFav = !car.isFav
     _saveCarToStorage()
+    return car
 }
 
 function setCarFilter(filterBy = {}) {
@@ -128,13 +135,16 @@ function _saveCarToStorage() {
 
 
 function getTableCarSrt(car) {
-    return `<tr>
+    return `
+    <tr class="car-card">
     <td>${car.id}</td>
-    <td>${car.vendor}</td>
-    <td>${_trimStr(car.desc)}</td>
+    <td class="card-text">
+    <h5>${car.vendor}</h5>
+    <h6>${_trimStr(car.desc)}</h6>
+    </td>
     <td>${car.maxSpeed}</td>
     <td>
-    <button onclick="onDeleteCar('${car.id}')" class="btn-remove">Remove</button>
+    <button onclick="onDeleteCar('${car.id}')">Remove</button>
     <button onclick="onReadCar('${car.id}')">Details</button>
     <button onclick="onUpdateCar('${car.id}')">Update</button>
     <button onclick="onAddFavorite('${car.id}')">${car.isFav ? '❤️' : '🖤'}</button>
@@ -143,14 +153,19 @@ function getTableCarSrt(car) {
 }
 
 function getCardCarStr(car) {
-    return `<article class="car-preview">
+    return `
+    <article class="car-card">
     <button onclick="onDeleteCar('${car.id}')" class="btn-remove">X</button>
-    <button onclick="onAddFavorite('${car.id}')" class="btn-fav">${car.isFav ? '❤️' : '🖤'}</button>
-    <h5>${car.vendor}</h5>
     <img onerror="this.src='img/error.png'" src="img/${car.vendor}.png" alt="${car.vendor}">
-    <h6>up to <span>${car.maxSpeed}</span></h6>
+   <div class="card-text">
+   <h5>${car.vendor}</h5>
+   <h6>up to <span>${car.maxSpeed}</span></h6>
+   </div>
+    <div class="utils-btn flex">
     <button onclick="onReadCar('${car.id}')">Details</button>
     <button onclick="onUpdateCar('${car.id}')">Update</button>
+    <button onclick="onAddFavorite('${car.id}')" class="btn-fav">${car.isFav ? '❤️' : '🖤'}</button>
+    </div>
     </article>`
 }
 
