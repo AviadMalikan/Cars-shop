@@ -162,6 +162,40 @@ h6 {
     cursor: pointer;
 }
 
+.filter-text {
+    position: relative;
+    margin: 0 20px;
+}
+
+.filter-text label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: white;
+    padding: 0 5px;
+    pointer-events: none;
+    color: var(--clr1);
+    transition: .4s;
+}
+
+.filter-text input {
+    height: 40px;
+    width: 320px;
+    padding: 0 10px;
+    background: transparent;
+    color: var(--clr1);
+    border: 1px solid var(--clr1);
+    outline: none;
+    border-radius: 5px;
+}
+
+.filter-text input:focus~label {
+    top: 0;
+    font-size: 12px;
+    background-color: white;
+
+}
 
 
 
