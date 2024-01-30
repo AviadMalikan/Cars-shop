@@ -23,28 +23,34 @@
                     onkeyup="onSetFilterBy({name: this.value.toLowerCase()})">
                 <label for="search-box">Search</label>
             </div>
-            <label>
-                Minium speed
-                <input type="range" min="50" max="300" value="50" class="filter-speed-range"
-                    onchange="this.title=this.value,onSetFilterBy({minSpeed: this.value})">
-            </label>
+
         </section>
 
     </header>
 
-    <main class="main-conatiner">
+    <main class="main-container">
         <section class="car-show-by flex alien-center space-between">
 
-            <section class="car-sort">
-                Sort By:
-                <select class="sort-by" onchange="onSetSortBy()">
-                    <option value="">select sorting</option>
-                    <option value="vendor">By vendor</option>
-                    <option value="maxSpeed">speed</option>
-                </select>
-                <input type="checkbox" class="sort-desc" onchange="onSetSortBy()">Low-high
-            </section>
+            <section class="car-sort flex">
 
+                <div class="sort-by-container">
+
+                    Sort By:
+                    <select class="sort-by" onchange="onSetSortBy()">
+                        <option value="">select sorting</option>
+                        <option value="vendor">By vendor</option>
+                        <option value="maxSpeed">speed</option>
+                    </select>
+                    <input type="checkbox" class="sort-desc" onchange="onSetSortBy()">Low-high
+                </div>
+                <div class="filter-by-speed-contianer">
+                    <label>
+                        Minium speed
+                        <input type="range" min="50" max="300" value="50" class="filter-speed-range"
+                            onchange="this.title=this.value,onSetFilterBy({minSpeed: this.value})">
+                    </label>
+                </div>
+            </section>
             <section class="show-by">
                 <button onclick="onSetShowBy('cards')">&#8759</button>
                 <button onclick="onSetShowBy('table')">&#9825</button>
@@ -55,7 +61,6 @@
 
         <section class="cars-preview"> </section>
 
-        <table class="cars-preview-table"></table>
         <button onclick="onMovePage(-1)">Prev Page</button>
         <button onclick="onMovePage(+1)">Next Page</button>
     </main>

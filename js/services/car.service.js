@@ -137,7 +137,6 @@ function _saveCarToStorage() {
 function getTableCarSrt(car) {
     return `
     <tr class="car-card">
-    <td>${car.id}</td>
     <td class="card-text">
     <h5>${car.vendor}</h5>
     <h6>${_trimStr(car.desc)}</h6>

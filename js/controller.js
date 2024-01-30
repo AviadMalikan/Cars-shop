@@ -17,7 +17,6 @@ function renderCars() {
         strHTMLs.unshift(`
         <table><thead>
         <tr>
-            <th>Id</th>
             <th>Description</th>
             <th>Max speed</th>
             <th>Actions</th>
@@ -25,7 +24,6 @@ function renderCars() {
     </thead>`)
         document.querySelector('.cars-preview').innerHTML = strHTMLs.join('') + '</table>'
         document.querySelector('.cars-preview').classList.add('cars-preview-table')
-
     } else {
         strHTMLs = cars.map(car => getCardCarStr(car))
         document.querySelector('.cars-preview').innerHTML = strHTMLs.join('')
