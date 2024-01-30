@@ -16,9 +16,12 @@
         <section class="car-filter">
             <!-- <select class="filter-vendor-select" onchange="onSetFilterBy({vendor:this.value})">
             </select> -->
+
+
             <div class="filter-text">
-                <input type="text" id="search-box" placeholder="Enter car name" class="filter-name-box"
+                <input type="text" id="search-box" class="filter-name-box"
                     onkeyup="onSetFilterBy({name: this.value.toLowerCase()})">
+                <label for="search-box">Search</label>
             </div>
             <label>
                 Minium speed
@@ -27,13 +30,6 @@
             </label>
         </section>
 
-        <nav class="main-nav">
-            <ul class="flex clean-list">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Cars</a></li>
-            </ul>
-        </nav>
     </header>
 
     <main class="main-conatiner">
@@ -57,20 +53,20 @@
 
         <button class="add-car" onclick="onAddCar()">Add Car</button>
 
-        <section class="cars-preview flex"> </section>
+        <section class="cars-preview"> </section>
 
         <table class="cars-preview-table"></table>
         <button onclick="onMovePage(-1)">Prev Page</button>
         <button onclick="onMovePage(+1)">Next Page</button>
     </main>
 
-    <div class="modal">
+    <!-- <div class="modal">
         <h3></h3>
         <h4>max speed <span></span></h4>
         <p></p>
         <h5 class="rate"></h5>
         <button onclick="onCloseModal()">Close</button>
-    </div>
+    </div> -->
 
     <div class="user-msg"></div>
 
