@@ -72,25 +72,30 @@ function onUpdateCar(carId) {
 
 function onReadCar(carId) {
     const car = getCarById(carId)
+    const elBgModal = document.querySelector('.modal-bg').classList.add('open')
     const elModal = document.querySelector('.modal')
-    if (elModal.classList.value.includes('open')) return elModal.classList.remove('open')
 
+    // if (elModal.classList.value.includes('open')) return elModal.classList.remove('open')
+    console.log('elModal.querySelector', elModal.querySelector('img'))
+
+    elModal.querySelector('img').src = `img/${car.vendor}.png`
     elModal.querySelector('h3').innerText = car.vendor
     elModal.querySelector('h4 span').innerText = car.maxSpeed
     elModal.querySelector('p').innerText = car.desc
 
     var strHTML =
-        `<button class="rate" onclick="onSetRate('${car.id}',1)">+</button>
+        `
+    <h4>${car.rate ? '⭐'.repeat(car.rate) : '⚫'}</h4>
+    <button class="rate" onclick="onSetRate('${car.id}',1)">+</button>
     <button class="rate" onclick="onSetRate('${car.id}',-1)">-</button>
-    <br>
-    <span>${car.rate ? '⭐'.repeat(car.rate) : '⚫'}</span>`
+    `
     elModal.querySelector('.rate').innerHTML = strHTML
     elModal.classList.add('open')
 }
 
 function onSetRate(carId, num) {
     const car = setRate(carId, num)
-    var elSpanModal = document.querySelector('.modal h5 span')
+    var elSpanModal = document.querySelector('.modal .rate h4')
     elSpanModal.innerText = car.rate ? '⭐'.repeat(car.rate) : '⚫'
 }
 
@@ -108,6 +113,7 @@ function onSetFilterBy(filterBy) {
 
 function onCloseModal() {
     document.querySelector('.modal').classList.remove('open')
+    document.querySelector('.modal-bg').classList.remove('open')
 }
 
 function flashMsg(msg) {

@@ -71,7 +71,7 @@ function updateCar(carId, newSpeed) {
 
 function setRate(carId, num) {
     const car = getCarById(carId)
-    if (car.rate + num < 0 || car.rate + num > 5) return
+    if (car.rate + num < 0 || car.rate + num > 5) return car
     car.rate += num
     _saveCarToStorage()
     return car
