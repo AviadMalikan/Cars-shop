@@ -50,6 +50,7 @@ function delateCar(carId) {
 }
 
 function addCar(vendor) {
+
     const car = _createCar(vendor)
     if (!gVendors.includes(vendor)) gVendors.push(vendor)
     gCars.unshift(car)
@@ -161,11 +162,12 @@ function getCardCarStr(car) {
    <h6>up to <span>${car.maxSpeed}</span></h6>
    </div>
     <div class="utils-btn flex">
-    <button onclick="onReadCar('${car.id}')">Details</button>
+    <button onclick="onSetModalBy('readCar','${car.id}')">Details</button>
     <button onclick="onUpdateCar('${car.id}')">Update</button>
     <button onclick="onAddFavorite('${car.id}')" class="btn-fav">${car.isFav ? '❤️' : '🖤'}</button>
     </div>
     </article>`
+    // <button onclick="onReadCar('${car.id}')">Details</button>
 }
 
 

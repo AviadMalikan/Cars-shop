@@ -202,12 +202,13 @@ h6 {
     height: 100vh;
     min-width: 300px;
     transition: left .5s;
+    width: 100%;
 }
 
 
 .modal.open {
     left: 0;
-    top: 0
+    top: 0;
 }
 
 
@@ -303,6 +304,8 @@ h6 {
         }
 
         .modal-bg.open {
+            cursor: pointer;
+
             position: fixed;
             top: 0;
             left: 0;
